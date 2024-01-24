@@ -1,5 +1,7 @@
 package com.example.validation.dto;
 
+import com.example.validation.constraints.annotations.EmailBlackList;
+import com.example.validation.constraints.annotations.EmailWhiteList;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -19,6 +21,8 @@ public class UserDto {
     private String username;
     // message를 기록하면 예외에 기록되는 문구를 바꿀 수 있다.
     @Email(message = "Email을 넣어주세요.")
+//    @EmailWhiteList
+    @EmailBlackList(blacklist = {"malware.good"})
     private String email;
     // 14세 이상만 받아준다.
     @Min(value = 14, message = "만 14세 이하는 부모님 동의가 필요합니다.")
